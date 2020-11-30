@@ -1,42 +1,35 @@
-import React, { Component } from "react";
-import employees from "../employees"
+import React from "react";
 
-const employeeTable = []
-employees.forEach(employee => 
-    employeeTable.push(
-        <tr> 
-            <td>{employee.firstName}</td>
-            <td>{employee.lastName}</td>
-            <td>{employee.department}</td>
-            <td>{employee.role}</td>
-            <td>{employee.salary}</td>
-        </tr>
+function Table({ userData, sortUsers }) {
+    
+    return (
+        <table border="1">
+            <thead>
+                <tr>
+                    <th onClick={() => { console.log("sorting by name"); sortUsers("name")}}>Name</th>
+                    <th onClick={() => { console.log("sorting by Date of Birth"); sortUsers("dob")}}>DOB</th>
+                    <th onClick={() => { console.log("sorting by Phone"); sortUsers("phone")}}>Phone</th>
+                    <th onClick={() => { console.log("sorting by Email"); sortUsers("email")}}>Email</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                {
+                    userData.map(user => {
+                        return(
+                            <tr> 
+                                <td>{user.name.first + " " + user.name.last}</td>
+                                <td>{user.dob.date.substring(0,10)}</td>
+                                <td>{user.phone}</td>
+                                <td>{user.email.split("@")[0]}</td>
+                            </tr>  
+                        )
+                    })
+                } 
+            </tbody>
+            
+        </table>
     )
-)
-// TODO: Add keys to dynamically generated table rows
-
-class Table extends Component {
-
-    render() {
-        return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Department</th>
-                        <th>Role</th>
-                        <th>Salary</th>
-                    </tr>
-                    
-                </thead>
-                <tbody>
-                    {employeeTable} 
-                </tbody>
-               
-            </table>
-        )
-    }
 }
 
 export default Table
