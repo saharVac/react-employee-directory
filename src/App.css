@@ -42,14 +42,47 @@ h1 {
   margin: auto;
 }
 
+#show-filter {
+  margin: 20px auto 0 auto;
+  width: 95%;
+  padding: 2px;
+}
+
+form {
+  width: 97%;
+  margin: 20px auto;
+  display: none;
+}
+
+form h4 {
+  margin: 5px auto 10px auto;
+}
+
+form label {
+  margin-left: 2%;
+  float: left;
+  margin-bottom: 5px;
+}
+
+form input {
+  width: 95%;
+  margin-bottom: 10px;
+}
+
 #apply-changes {
   display: block;
   margin: 5px auto;
-  width: 40%;
+  width: 97%;
+  background-color: #abb3db;
+  padding: 2px;
+}
+
+#directions {
+  margin-bottom: 0;
 }
 
 table {
-  margin: 20px auto;
+  margin: 6px auto;
   font-size: 12pt;
   width: 100%;
 }

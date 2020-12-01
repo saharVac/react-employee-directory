@@ -6,7 +6,8 @@ import $ from "jquery"
 class DirectoryContainer extends Component {
 
     state = {
-        users: []
+        users: [],
+        filteredUsers: []
     }
 
     componentDidMount() {
@@ -20,6 +21,7 @@ class DirectoryContainer extends Component {
             }
           }).then(() => {
                 this.setState({users: fetchedUsers})
+                this.setState({filteredUsers: fetchedUsers})
           });
         
     }
@@ -49,11 +51,50 @@ class DirectoryContainer extends Component {
         
     }
 
+    showFilter = () => {
+        $("#filter-form").css("display", "block")
+        $("#show-filter").css("display", "none")
+    }
+
+    filterUsers = (event) => {
+        event.preventDefault()
+
+        // filter by first name
+        if ($("#first-name").val()) {
+            this.setState({ filteredUsers: this.state.users.filter(user => user.name.first.includes($("#first-name").val()))})
+        } 
+        // filter by last name
+        if ($("#last-name").val()) {
+            this.setState({ filteredUsers: this.state.users.filter(user => user.name.last.includes($("#last-name").val()))})
+        }
+        // filter by phone
+        if ($("#phone").val()) {
+            this.setState({ filteredUsers: this.state.users.filter(user => user.phone.includes($("#phone").val()))})
+        }
+        // filter by email
+        if ($("#email").val()) {
+            this.setState({ filteredUsers: this.state.users.filter(user => user.email.includes($("#email").val()))})
+        }
+
+        // Take away filter form
+        $("#filter-form").css("display", "none")
+        // Add show filter button
+        $("#show-filter").css("display", "block")
+    }
+
     render() {
         return (
             <div>
-                <Filter />
-                <Table sortUsers={this.sortUsers} userData={this.state.users} />
+                <button id="show-filter" onClick={this.showFilter}>Filter</button>
+                <Filter 
+                    filteredFirstName={this.state.firstName} 
+                    filteredLastName={this.state.firstName} 
+                    filteredPhone={this.state.firstName} 
+                    filteredEmail={this.state.firstName} 
+                    filterUsers={this.filterUsers} 
+                />
+                <h4 id="directions">Click column to sort by</h4>
+                <Table sortUsers={this.sortUsers} userData={this.state.filteredUsers} />
             </div>
         )
     }

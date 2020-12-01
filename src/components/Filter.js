@@ -1,24 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 
-const options = ["First Name", "Last Name", "Department", "Role", "Salary"];
-const optionTags = []
-// options.forEach(option => {
-//     optionTags.push
-// })
+function Selections({ filteredFirstName, filteredLastName, filteredPhone, filteredEmail, filterUsers }) {
 
-class Selections extends Component {
+    return (
+        <form id="filter-form">
+            <h4>Filter By</h4>
+            <label>First Name: </label>
+            <input placeholder={filteredFirstName} id="first-name"></input>
+            <label>Last Name: </label>
+            <input placeholder={filteredLastName} id="last-name"></input>
 
-    render() {
-        return (
-            <form>
-                <label>Filter By:</label>
-                <select>
-                    
-                </select>
-                <button id="apply-changes" type="submit">Apply</button>
-            </form>
-        )
-    }
+            <label>Phone: </label>
+            <input placeholder={filteredPhone} id="phone"></input>
+            <label>Email: </label>
+            <input placeholder={filteredEmail} id="email"></input>
+
+            <button onClick={filterUsers} id="apply-changes" type="submit">Apply</button>
+        </form>
+    )
+    
 }
 
 export default Selections;

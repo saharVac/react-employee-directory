@@ -3,7 +3,7 @@ import React from "react";
 function Table({ userData, sortUsers }) {
     
     return (
-        <table border="1">
+        <table id="user-table" border="1">
             <thead>
                 <tr>
                     <th onClick={() => { console.log("sorting by name"); sortUsers("name")}}>Name</th>
