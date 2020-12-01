@@ -3,6 +3,8 @@ import Filter from "./Filter"
 import Table from "./Table"
 import $ from "jquery"
 
+// TODO: have users filter as typing occurs rather than when form submits
+
 class DirectoryContainer extends Component {
 
     state = {
